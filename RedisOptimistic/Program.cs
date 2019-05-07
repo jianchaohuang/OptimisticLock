@@ -10,10 +10,10 @@ namespace RedisOptimistic
     {
         static void Main(string[] args)
         {
-            RedisHelper redis = new RedisHelper();
-            redis.SetStringValue("key", "100");
+
+            StackExchangeRedisHelper.SetStringValue("key", "100");
             DateTime start = DateTime.Now;
-            Parallel.For(1, 1000, index => redis.Order(index));
+            Parallel.For(1, 1000, index => StackExchangeRedisHelper.Order(index));
             Console.WriteLine("耗时：" + (DateTime.Now - start).Seconds);
             Console.ReadKey();
         }
